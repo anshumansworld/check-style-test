@@ -8,5 +8,6 @@ exclude_paths: [
   "build/",
   "mediation/src/test/",
   "mediation.adaters/",
-  "mediation.demo/src/main/java/net/pubnative/mediation/demo/"
+  "mediation.demo/src/main/java/net/pubnative/mediation/demo/",
+  "**/model/"
 ]
