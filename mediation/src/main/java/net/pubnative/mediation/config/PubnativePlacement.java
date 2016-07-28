@@ -32,11 +32,11 @@ import net.pubnative.mediation.config.model.PubnativeDeliveryRuleModel;
 import net.pubnative.mediation.config.model.PubnativeNetworkModel;
 import net.pubnative.mediation.config.model.PubnativePlacementModel;
 import net.pubnative.mediation.config.model.PubnativePriorityRuleModel;
+import net.pubnative.mediation.exceptions.PubnativeException;
 
 import java.util.Calendar;
 import java.util.Map;
 import java.util.UUID;
-import net.pubnative.mediation.exceptions.PubnativeException;
 
 public class PubnativePlacement implements PubnativeConfigManager.Listener {
 
@@ -56,15 +56,15 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     public interface Listener {
 
         /**
-         * Called when the placement was loaded
+         * Called when the placement was loaded.
          *
-         * @param placement    placement that finished loading
+         * @param placement    placement that finished loading.
          * @param pacingActive indicates if the pacing cap is active or not.
          */
         void onPubnativePlacementReady(PubnativePlacement placement, boolean pacingActive);
 
         /**
-         * Called when the placement initialize failed
+         * Called when the placement initialize failed.
          *
          * @param placement placement that failed loading.
          */
@@ -72,24 +72,19 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Loads the basic data for the current placement
+     * Loads the basic data for the current placement.
      *
-     * @param context       valid context
-     * @param appToken      app token string
-     * @param placementName placement name string
-     * @param extras        valid Map with extra request details
+     * @param context       valid context.
+     * @param appToken      app token string.
+     * @param placementName placement name string.
+     * @param extras        valid Map with extra request details.
      * @param listener      valid listener to callback when the placement is ready.
      */
-    public void load(Context context,
-                     String appToken,
-                     String placementName,
-                     Map extras,
-                     final Listener listener) {
+    public void load(Context context, String appToken, String placementName, Map extras, final Listener listener) {
 
         Log.v(TAG, "initialize");
         if (listener == null) {
-            Log.e(TAG, "initialize", new IllegalArgumentException("listener cannot be null, " +
-                    "dropping this call"));
+            Log.e(TAG, "initialize", new IllegalArgumentException("listener cannot be null, dropping this call"));
         } else {
             mListener = listener;
             if (context == null ||
@@ -110,8 +105,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Returns this placement tracking UUID, this will be unique
-     * for each instance of PubnativePlacement objects
+     * Returns this placement tracking UUID, this will be unique for each instance of PubnativePlacement objects.
      *
      * @return String representation of the UUID.
      */
@@ -122,7 +116,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Returns the configured app token for this placement
+     * Returns the configured app token for this placement.
      *
      * @return valid apptoken string, null if not set.
      */
@@ -133,7 +127,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets this placement ad format code
+     * Gets this placement ad format code.
      *
      * @return valid string if loaded, null if not.
      */
@@ -148,7 +142,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current delivery rule model
+     * Gets the current delivery rule model.
      *
      * @return valid PubnativeDeliveryRuleModel if loaded, null if not.
      */
@@ -163,7 +157,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gest the loaded config model
+     * Gest the loaded config model.
      *
      * @return loaded PubnativeConfigModel object.
      */
@@ -174,7 +168,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets this placement name
+     * Gets this placement name.
      *
      * @return valid placement name string.
      */
@@ -185,7 +179,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current priority model
+     * Gets the current priority model.
      *
      * @return valid PubnativePriorityRuleModel, null if there are no more.
      */
@@ -200,7 +194,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current network model
+     * Gets the current network model.
      *
      * @return valid PubnativeNetworkModel, null if there are no more.
      */
@@ -281,9 +275,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
             PubnativeDeliveryRuleModel deliveryRuleModel = mPlacementModel.delivery_rule;
             Calendar overdueCalendar = deliveryRuleModel.getPacingOverdueCalendar();
             Calendar pacingCalendar = PubnativeDeliveryManager.getPacingCalendar(mPlacementName);
-            if (overdueCalendar == null
-                    || pacingCalendar == null
-                    || pacingCalendar.before(overdueCalendar)) {
+            if (overdueCalendar == null || pacingCalendar == null || pacingCalendar.before(overdueCalendar)) {
                 // Pacing cap reset or deactivated or not reached
                 result = false;
             } else {
