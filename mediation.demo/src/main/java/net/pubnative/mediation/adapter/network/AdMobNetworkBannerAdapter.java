@@ -141,6 +141,7 @@ public class AdMobNetworkBannerAdapter extends PubnativeNetworkBannerAdapter {
     //==============================================================================================
     // AdListener
     //----------------------------------------------------------------------------------------------
+
     private com.google.android.gms.ads.AdListener listener = new com.google.android.gms.ads.AdListener() {
 
         @Override

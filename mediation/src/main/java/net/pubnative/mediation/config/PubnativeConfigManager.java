@@ -95,7 +95,7 @@ public class PubnativeConfigManager {
      * @param extras   valid extras map with parameters for the request.
      * @param listener listener to be used for tracking the config loaded callback.
      */
-    public synchronized static void getConfig(Context context,
+    public static synchronized void getConfig(Context context,
                                               String appToken,
                                               Map extras,
                                               PubnativeConfigManager.Listener listener) {

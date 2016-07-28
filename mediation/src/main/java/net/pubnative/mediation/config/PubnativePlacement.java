@@ -87,9 +87,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
             Log.e(TAG, "initialize", new IllegalArgumentException("listener cannot be null, dropping this call"));
         } else {
             mListener = listener;
-            if (context == null ||
-                TextUtils.isEmpty(appToken) ||
-                TextUtils.isEmpty(placementName)) {
+            if (context == null || TextUtils.isEmpty(appToken) || TextUtils.isEmpty(placementName)) {
                 invokeOnLoadFail(PubnativeException.PLACEMENT_PARAMETERS_INVALID);
             } else if (mConfigModel != null) {
                 invokeOnLoadFail(new Exception("initialize - Error: placement is loaded"));
