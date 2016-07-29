@@ -5,6 +5,7 @@ engines:
     channel: 'beta'
   pmd:
       enabled: true
+      config: 'config/pmd/pmd.xml'
       channel: 'beta'
 ratings:
    paths:  [
