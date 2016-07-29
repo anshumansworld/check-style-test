@@ -7,6 +7,16 @@ engines:
       enabled: true
       config: 'config/pmd/pmd.xml'
       channel: 'beta'
+      rulesets: [
+        "java-unusedcode",
+        "java-imports"
+      ]
+      reports: [
+        "xml"
+      ]
+      paths:  [
+         "**.java"
+         ]
 ratings:
    paths:  [
    "**.java"
