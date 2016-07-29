@@ -103,10 +103,10 @@ public abstract class PubnativeNetworkInterstitialAdapter extends PubnativeNetwo
          */
         void onAdapterHide(PubnativeNetworkInterstitialAdapter interstitial);
     }
+
     //==============================================================================================
     // Overridable methods
     //==============================================================================================
-
     /**
      * Sets loadlistener for this request.
      *
