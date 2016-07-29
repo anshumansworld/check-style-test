@@ -141,6 +141,19 @@ bintray {
         }
     }
 }
+task pmd (type: Pmd, dependsOn: assembleDebug) {
+
+    description 'Run pmd'
+    group 'verification'
+
+    ruleSets = ["basic", "braces", "strings", "design", "unusedcode"]
+    source = fileTree('src/main/java')
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
 
 //==================================================================================================
 // JAR
