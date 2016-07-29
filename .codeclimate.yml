@@ -6,6 +6,7 @@ engines:
   pmd:
       enabled: true
       config: 'config/pmd/pmd.xml'
+      channel: 'beta'
 ratings:
    paths:  [
    "**.java"
