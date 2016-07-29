@@ -32,7 +32,7 @@ def checkerDefinitionFile = null
 if (configJson.config?.trim()) {
 	checkerDefinitionFile = new File(codeFolder, configJson.config)
 } else {
-    checkerDefinitionFile = new File(scriptDir.replace('/bin','/config'), 'codeclimate_pmd.xml')
+    checkerDefinitionFile = new File(scriptDir.replace('/bin','/config/pmd/'), 'pmd.xml')
 }
 assert checkerDefinitionFile.exists() && checkerDefinitionFile.isFile()
 
