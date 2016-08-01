@@ -44,41 +44,41 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     protected Context                 mContext;
     protected Listener                mListener;
     protected String                  mAppToken;
-    protected String                  mRequestId;
+    protected String                  mRequestID;
     protected String                  mPlacementName;
     protected PubnativePlacementModel mPlacementModel;
     protected PubnativeConfigModel    mConfigModel;
     protected int                     mCurrentNetworkIndex;
 
     /**
-     * Interface for placement callbacks.
+     * Interface for placement callbacks
      */
     public interface Listener {
 
         /**
-         * Called when the placement was loaded.
+         * Called when the placement was loaded
          *
-         * @param placement    placement that finished loading.
-         * @param pacingActive indicates if the pacing cap is active or not.
+         * @param placement    placement that finished loading
+         * @param pacingActive indicates if the pacing cap is active or not
          */
         void onPubnativePlacementReady(PubnativePlacement placement, boolean pacingActive);
 
         /**
-         * Called when the placement initialize failed.
+         * Called when the placement initialize failed
          *
-         * @param placement placement that failed loading.
+         * @param placement placement that failed loading
          */
         void onPubnativePlacementLoadFail(PubnativePlacement placement, Exception exception);
     }
 
     /**
-     * Loads the basic data for the current placement.
+     * Loads the basic data for the current placement
      *
-     * @param context       valid context.
-     * @param appToken      app token string.
-     * @param placementName placement name string.
-     * @param extras        valid Map with extra request details.
-     * @param listener      valid listener to callback when the placement is ready.
+     * @param context       valid context
+     * @param appToken      app token string
+     * @param placementName placement name string
+     * @param extras        valid Map with extra request details
+     * @param listener      valid listener to callback when the placement is ready
      */
     public void load(Context context, String appToken, String placementName, Map extras, final Listener listener) {
 
@@ -87,7 +87,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
             Log.e(TAG, "initialize", new IllegalArgumentException("listener cannot be null, dropping this call"));
         } else {
             mListener = listener;
-            if (context == null || TextUtils.isEmpty(appToken) || TextUtils.isEmpty(placementName)) {
+            if (context == null ||
+                TextUtils.isEmpty(appToken) ||
+                TextUtils.isEmpty(placementName)) {
                 invokeOnLoadFail(PubnativeException.PLACEMENT_PARAMETERS_INVALID);
             } else if (mConfigModel != null) {
                 invokeOnLoadFail(new Exception("initialize - Error: placement is loaded"));
@@ -96,27 +98,28 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
                 mAppToken = appToken;
                 mPlacementName = placementName;
                 mCurrentNetworkIndex = -1;
-                mRequestId = UUID.randomUUID().toString();
+                mRequestID = UUID.randomUUID().toString();
                 PubnativeConfigManager.getConfig(mContext, mAppToken, extras, this);
             }
         }
     }
 
     /**
-     * Returns this placement tracking UUID, this will be unique for each instance of PubnativePlacement objects.
+     * Returns this placement tracking UUID, this will be unique
+     * for each instance of PubnativePlacement objects
      *
-     * @return String representation of the UUID.
+     * @return String representation of the UUID
      */
     public String getTrackingUUID() {
 
         Log.v(TAG, "getUUID");
-        return mRequestId;
+        return mRequestID;
     }
 
     /**
-     * Returns the configured app token for this placement.
+     * Returns the configured app token for this placement
      *
-     * @return valid apptoken string, null if not set.
+     * @return valid apptoken string, null if not set
      */
     public String getAppToken() {
 
@@ -125,9 +128,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets this placement ad format code.
+     * Gets this placement ad format code
      *
-     * @return valid string if loaded, null if not.
+     * @return valid string if loaded, null if not
      */
     public String getAdFormatCode() {
 
@@ -140,9 +143,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current delivery rule model.
+     * Gets the current delivery rule model
      *
-     * @return valid PubnativeDeliveryRuleModel if loaded, null if not.
+     * @return valid PubnativeDeliveryRuleModel if loaded, null if not
      */
     public PubnativeDeliveryRuleModel getDeliveryRule() {
 
@@ -155,9 +158,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gest the loaded config model.
+     * Gest the loaded config model
      *
-     * @return loaded PubnativeConfigModel object.
+     * @return loaded PubnativeConfigModel object
      */
     public PubnativeConfigModel getConfig() {
 
@@ -166,9 +169,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets this placement name.
+     * Gets this placement name
      *
-     * @return valid placement name string.
+     * @return valid placement name string
      */
     public String getName() {
 
@@ -177,9 +180,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current priority model.
+     * Gets the current priority model
      *
-     * @return valid PubnativePriorityRuleModel, null if there are no more.
+     * @return valid PubnativePriorityRuleModel, null if there are no more
      */
     public PubnativePriorityRuleModel currentPriority() {
 
@@ -192,9 +195,9 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Gets the current network model.
+     * Gets the current network model
      *
-     * @return valid PubnativeNetworkModel, null if there are no more.
+     * @return valid PubnativeNetworkModel, null if there are no more
      */
     public PubnativeNetworkModel currentNetwork() {
 
@@ -208,7 +211,7 @@ public class PubnativePlacement implements PubnativeConfigManager.Listener {
     }
 
     /**
-     * Waterfalls to the next network.
+     * Waterfalls to the next network
      */
     public void next() {
 

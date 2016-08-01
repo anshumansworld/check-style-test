@@ -49,7 +49,7 @@ public class YahooNetworkRequestAdapter extends PubnativeNetworkRequestAdapter
     protected Context mContext;
 
     /**
-     * Creates a new instance of YahooNetworkRequestAdapter.
+     * Creates a new instance of YahooNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -162,10 +162,7 @@ public class YahooNetworkRequestAdapter extends PubnativeNetworkRequestAdapter
         } else if (FlurryAdErrorType.FETCH == flurryAdErrorType) {
             invokeLoaded(null);
         } else {
-            invokeFailed(new Exception("YahooNetworkAdapterHub - "
-                    + errCode
-                    + " - "
-                    + flurryAdErrorType.name()));
+            invokeFailed(new Exception("YahooNetworkAdapterHub - " + errCode + " - " + flurryAdErrorType.name()));
         }
     }
 

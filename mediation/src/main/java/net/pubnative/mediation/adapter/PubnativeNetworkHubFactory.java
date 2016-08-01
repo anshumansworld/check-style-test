@@ -29,25 +29,25 @@ import net.pubnative.mediation.config.model.PubnativeNetworkModel;
 
 import java.lang.reflect.Constructor;
 
-public final class PubnativeNetworkHubFactory {
+public class PubnativeNetworkHubFactory {
 
     private static         String TAG             = PubnativeNetworkHubFactory.class.getSimpleName();
-    private static final   String NETWORK_PACKAGE = "net.pubnative.mediation.adapter.network";
+    protected final static String NETWORK_PACKAGE = "net.pubnative.mediation.adapter.network";
 
     /**
-     * Creates a new hub instance by using the values passed in using model.
+     * Creates a new hub instance by using the values passed in using model
      *
-     * @param model network model that contains the values needed for creating the hub.
+     * @param model network model that contains the values needed for creating the hub
      *
-     * @return instance of PubnativeNetworkHub if created, else null.
+     * @return instance of PubnativeNetworkHub if created, else null
      */
     public static PubnativeNetworkHub createHub(PubnativeNetworkModel model) {
 
         Log.v(TAG, "createHub");
         PubnativeNetworkHub result = null;
         try {
-            final Class<?> hubClass = Class.forName(getPackageName(model.adapter));
-            final Constructor<?> hubConstructor = hubClass.getConstructor();
+            Class<?> hubClass = Class.forName(getPackageName(model.adapter));
+            Constructor<?> hubConstructor = hubClass.getConstructor();
             result = (PubnativeNetworkHub) hubConstructor.newInstance();
             if (result != null) {
                 result.setNetworkData(model.params);

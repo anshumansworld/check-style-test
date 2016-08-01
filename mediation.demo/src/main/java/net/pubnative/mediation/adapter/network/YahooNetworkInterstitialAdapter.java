@@ -46,7 +46,7 @@ public class YahooNetworkInterstitialAdapter extends PubnativeNetworkInterstitia
     private FlurryAdInterstitial mInterstitial;
 
     /**
-     * Creates a new instance of YahooNetworkInterstitialAdapter.
+     * Creates a new instance of YahooNetworkInterstitialAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -192,9 +192,9 @@ public class YahooNetworkInterstitialAdapter extends PubnativeNetworkInterstitia
     }
 
     @Override
-    public void onError(FlurryAdInterstitial flurryAdInterstitial, FlurryAdErrorType flurryAdErrorType, int errorCode) {
+    public void onError(FlurryAdInterstitial flurryAdInterstitial, FlurryAdErrorType flurryAdErrorType, int i) {
 
-        Log.v(TAG, "onError: " + errorCode);
+        Log.v(TAG, "onError: " + i);
         invokeLoadFail(PubnativeException.ADAPTER_UNKNOWN_ERROR);
     }
 }

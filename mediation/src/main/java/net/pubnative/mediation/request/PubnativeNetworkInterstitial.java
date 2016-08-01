@@ -49,50 +49,51 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
     protected long                                mStartTimestamp;
 
     /**
-     * Interface for callbacks related to the interstitial view behaviour.
+     * Interface for callbacks related to the interstitial view behaviour
      */
     public interface Listener {
 
         /**
-         * Called whenever the interstitial finished loading an ad.
+         * Called whenever the interstitial finished loading an ad
+         * w
          *
-         * @param interstitial interstitial that finished the initialize.
+         * @param interstitial interstitial that finished the initialize
          */
         void onPubnativeNetworkInterstitialLoadFinish(PubnativeNetworkInterstitial interstitial);
 
         /**
-         * Called whenever the interstitial failed loading an ad.
+         * Called whenever the interstitial failed loading an ad
          *
-         * @param interstitial interstitial that failed the initialize.
-         * @param exception    exception with the description of the initialize error.
+         * @param interstitial interstitial that failed the initialize
+         * @param exception    exception with the description of the initialize error
          */
         void onPubnativeNetworkInterstitialLoadFail(PubnativeNetworkInterstitial interstitial, Exception exception);
 
         /**
-         * Called when the interstitial was just shown on the screen.
+         * Called when the interstitial was just shown on the screen
          *
-         * @param interstitial interstitial that was shown in the screen.
+         * @param interstitial interstitial that was shown in the screen
          */
         void onPubnativeNetworkInterstitialShow(PubnativeNetworkInterstitial interstitial);
 
         /**
-         * Called when the interstitial impression was confrimed.
+         * Called when the interstitial impression was confrimed
          *
-         * @param interstitial interstitial which impression was confirmed.
+         * @param interstitial interstitial which impression was confirmed
          */
         void onPubnativeNetworkInterstitialImpressionConfirmed(PubnativeNetworkInterstitial interstitial);
 
         /**
-         * Called whenever the interstitial was clicked by the user.
+         * Called whenever the interstitial was clicked by the user
          *
-         * @param interstitial interstitial that was clicked.
+         * @param interstitial interstitial that was clicked
          */
         void onPubnativeNetworkInterstitialClick(PubnativeNetworkInterstitial interstitial);
 
         /**
-         * Called whenever the interstitial was removed from the screen.
+         * Called whenever the interstitial was removed from the screen
          *
-         * @param interstitial interstitial that was hidden.
+         * @param interstitial interstitial that was hidden
          */
         void onPubnativeNetworkInterstitialHide(PubnativeNetworkInterstitial interstitial);
     }
@@ -101,9 +102,9 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
     //==============================================================================================
 
     /**
-     * Sets a callback listener for this interstitial object.
+     * Sets a callback listener for this interstitial object
      *
-     * @param listener valid PubnativeNetworkInterstitial.Listener object.
+     * @param listener valid PubnativeNetworkInterstitial.Listener object
      */
     public void setListener(Listener listener) {
 
@@ -112,17 +113,19 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Loads the interstitial ads before being shown.
-     * @param context valid Context.
-     * @param appToken valid app token string.
-     * @param placement valid placement string.
+     * Loads the interstitial ads before being shown
+     * @param context valid Context
+     * @param appToken valid app token string
+     * @param placement valid placement string
      */
     public synchronized void load(Context context, String appToken, String placement) {
 
         Log.v(TAG, "initialize");
         if (mListener == null) {
             Log.e(TAG, "initialize - Error: listener was not set, have you configured one using setListener()?");
-        } else if (context == null || TextUtils.isEmpty(appToken) || TextUtils.isEmpty(placement)) {
+        } else if (context == null ||
+                   TextUtils.isEmpty(appToken) ||
+                   TextUtils.isEmpty(placement)) {
             invokeLoadFail(PubnativeException.INTERSTITIAL_PARAMETERS_INVALID);
         } else if (mIsLoading) {
             invokeLoadFail(PubnativeException.INTERSTITIAL_LOADING);
@@ -135,9 +138,9 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Tells if the interstitial is ready to be shown.
+     * Tells if the interstitial is ready to be shown
      *
-     * @return true if ready, false if not.
+     * @return true if ready, false if not
      */
     public synchronized boolean isReady() {
 
@@ -150,7 +153,7 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
     }
 
     /**
-     * This method will show the interstitial if the ad is available.
+     * This method will show the interstitial if the ad is available
      */
     public synchronized void show() {
 
@@ -190,9 +193,7 @@ public class PubnativeNetworkInterstitial extends PubnativeNetworkWaterfall
 
         mAdapter = hub.getInterstitialAdapter();
         if (mAdapter == null) {
-            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(),
-                                             0,
-                                             PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
+            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(), 0, PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
 
             getNextNetwork();
         } else {

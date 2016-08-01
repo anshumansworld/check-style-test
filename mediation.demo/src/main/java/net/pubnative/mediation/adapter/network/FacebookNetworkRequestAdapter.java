@@ -46,7 +46,7 @@ public class FacebookNetworkRequestAdapter extends PubnativeNetworkRequestAdapte
     protected              NativeAd mNativeAd                   = null;
 
     /**
-     * Creates a new instance of FacebookNetworkRequestAdapter.
+     * Creates a new instance of FacebookNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -104,10 +104,7 @@ public class FacebookNetworkRequestAdapter extends PubnativeNetworkRequestAdapte
                     invokeLoaded(null);
                     break;
                 default:
-                    invokeFailed(new Exception("FacebookNetworkInterstitialAdapter -code "
-                            + adError.getErrorCode()
-                            + " -message "
-                            + adError.getErrorMessage()));
+                    invokeFailed(new Exception("FacebookNetworkInterstitialAdapter -code " + adError.getErrorCode() + " -message " + adError.getErrorMessage()));
             }
         }
     }

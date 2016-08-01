@@ -33,9 +33,9 @@ import java.io.InputStream;
 public class PubnativeConfigTestUtils {
 
     /**
-     * This method should be used to set up a test getConfig file stored under /src/test/resources.
+     * This method should be used to set up a test getConfig file stored under /src/test/resources
      *
-     * @param filename name of the resource file.
+     * @param filename name of the resource file
      */
     public static PubnativeConfigModel getTestConfig(String filename) {
 

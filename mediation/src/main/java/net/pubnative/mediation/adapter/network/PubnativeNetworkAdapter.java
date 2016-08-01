@@ -60,7 +60,7 @@ public abstract class PubnativeNetworkAdapter {
     //==============================================================================================
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -70,9 +70,9 @@ public abstract class PubnativeNetworkAdapter {
     }
 
     /**
-     * This method sets the extras for the adapter request.
+     * This method sets the extras for the adapter request
      *
-     * @param extras valid extras Map.
+     * @param extras valid extras Map
      */
     public void setExtras(Map<String, String> extras) {
 
@@ -81,9 +81,9 @@ public abstract class PubnativeNetworkAdapter {
     }
 
     /**
-     * This method sets the extras for the adapter request.
+     * This method sets the extras for the adapter request
      *
-     * @param targeting valid targeting filed.
+     * @param targeting valid targeting filed
      */
     public void setTargeting(PubnativeAdTargetingModel targeting) {
 
@@ -92,10 +92,10 @@ public abstract class PubnativeNetworkAdapter {
     }
 
     /**
-     * Starts this adapter process.
+     * Starts this adapter process
      *
-     * @param context         valid context.
-     * @param timeoutInMillis timeout in milliseconds, if 0, then no timeout is set.
+     * @param context         valid context
+     * @param timeoutInMillis timeout in milliseconds, if 0, then no timeout is set
      */
     public abstract void execute(Context context, int timeoutInMillis);
 

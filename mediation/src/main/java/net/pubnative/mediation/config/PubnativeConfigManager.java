@@ -61,7 +61,7 @@ public class PubnativeConfigManager {
     //==============================================================================================
 
     /**
-     * Interface for callbacks when the requested config gets downloaded.
+     * Interface for callbacks when the requested config gets downloaded
      */
     public interface Listener {
 
@@ -88,17 +88,14 @@ public class PubnativeConfigManager {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * Gets a config asynchronously with listener callback, downloading a new one when outdated.
+     * Gets a config asynchronously with listener callback, downloading a new one when outdated
      *
-     * @param context  valid context object.
-     * @param appToken unique identification key provided by Pubnative for mediation sdk.
-     * @param extras   valid extras map with parameters for the request.
-     * @param listener listener to be used for tracking the config loaded callback.
+     * @param context  valid context object
+     * @param appToken unique identification key provided by Pubnative for mediation sdk
+     * @param extras   valid extras map with parameters for the request
+     * @param listener listener to be used for tracking the config loaded callback
      */
-    public static synchronized void getConfig(Context context,
-                                              String appToken,
-                                              Map extras,
-                                              PubnativeConfigManager.Listener listener) {
+    public synchronized static void getConfig(Context context, String appToken, Map extras, PubnativeConfigManager.Listener listener) {
 
         Log.v(TAG, "getConfig: " + appToken);
         if (listener == null) {
@@ -122,9 +119,9 @@ public class PubnativeConfigManager {
     }
 
     /**
-     * Completely resets all stored config data.
+     * Completely resets all stored config data
      *
-     * @param context valid context object.
+     * @param context valid context object
      */
     public static void clean(Context context) {
 
@@ -164,12 +161,6 @@ public class PubnativeConfigManager {
         invokeLoaded(getStoredConfig(request.context), request.listener);
     }
 
-    /**
-     * This method used to get stored config for ad request.
-     *
-     * @param context valid context.
-     * @return        PubnativeConfigModel.
-     */
     public static PubnativeConfigModel getStoredConfig(Context context) {
 
         Log.v(TAG, "getStoredConfig");
@@ -207,7 +198,7 @@ public class PubnativeConfigManager {
         }
     }
 
-    protected static synchronized void downloadConfig(final PubnativeConfigRequestModel requestModel) {
+    protected synchronized static void downloadConfig(final PubnativeConfigRequestModel requestModel) {
 
         Log.v(TAG, "downloadConfig");
         PubnativeHttpRequest http = new PubnativeHttpRequest();
@@ -245,8 +236,7 @@ public class PubnativeConfigManager {
             serveStoredConfig(request);
         } else {
             try {
-                PubnativeConfigAPIResponseModel response = new Gson().fromJson(result,
-                                                                               PubnativeConfigAPIResponseModel.class);
+                PubnativeConfigAPIResponseModel response = new Gson().fromJson(result, PubnativeConfigAPIResponseModel.class);
                 if (PubnativeInsightsAPIResponseModel.Status.OK.equals(response.status)) {
                     // Update delivery manager's tracking data
                     updateDeliveryManagerCache(request.context, response.config);
@@ -278,8 +268,8 @@ public class PubnativeConfigManager {
         } else if (!storedAppToken.equals(request.appToken)) {
             // Stored config is different than the requested app token
             result = true;
-        } else if (refresh == null
-                || storedTimestamp == null) {
+        } else if (refresh == null ||
+                   storedTimestamp == null) {
             // There is no previous refresh or timestamp stored
             result = true;
         } else if (TimeUnit.MILLISECONDS.toMinutes(currentTimestamp - storedTimestamp) >= refresh) {
@@ -394,13 +384,13 @@ public class PubnativeConfigManager {
     // CONFIG
     //----------------------------------------------------------------------------------------------
 
-    protected static synchronized String getStoredConfigString(Context context) {
+    protected synchronized static String getStoredConfigString(Context context) {
 
         Log.v(TAG, "getStoredConfigString");
         return getStringSharedPreference(context, CONFIG_STRING_KEY);
     }
 
-    protected static synchronized void setStoredConfig(Context context, PubnativeConfigModel config) {
+    protected synchronized static void setStoredConfig(Context context, PubnativeConfigModel config) {
 
         Log.v(TAG, "setStoredConfig");
         // ensuring the string "null" is not getting saved.

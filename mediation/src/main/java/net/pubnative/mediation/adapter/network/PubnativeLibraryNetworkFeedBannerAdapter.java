@@ -33,15 +33,15 @@ import net.pubnative.mediation.exceptions.PubnativeException;
 
 import java.util.Map;
 
-public class PubnativeLibraryNetworkFeedBannerAdapter extends PubnativeNetworkFeedBannerAdapter
-        implements PubnativeFeedBanner.Listener {
+public class PubnativeLibraryNetworkFeedBannerAdapter
+        extends PubnativeNetworkFeedBannerAdapter implements PubnativeFeedBanner.Listener {
 
     private static String TAG = PubnativeLibraryNetworkFeedBannerAdapter.class.getSimpleName();
 
     protected PubnativeFeedBanner mFeedBanner;
 
     /**
-     * Creates a new instance of PubnativeLibraryNetworkFeedBannerAdapter.
+     * Creates a new instance of PubnativeLibraryNetworkFeedBannerAdapter
      *
      * @param data server configured data for the current adapter network.
      */

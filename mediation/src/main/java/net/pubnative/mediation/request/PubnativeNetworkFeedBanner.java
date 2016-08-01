@@ -53,50 +53,51 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     protected long                              mStartTimestamp;
 
     /**
-     * Interface for callbacks related to the feedBanner view behaviour.
+     * Interface for callbacks related to the feedBanner view behaviour
      */
     public interface Listener {
 
         /**
-         * Called whenever the feedBanner finished loading an ad.
+         * Called whenever the feedBanner finished loading an ad
+         * w
          *
-         * @param feedBanner feedBanner that finished the initialize.
+         * @param feedBanner feedBanner that finished the initialize
          */
         void onPubnativeNetworkFeedBannerLoadFinish(PubnativeNetworkFeedBanner feedBanner);
 
         /**
-         * Called whenever the feedBanner failed loading an ad.
+         * Called whenever the feedBanner failed loading an ad
          *
-         * @param feedBanner feedBanner that failed the initialize.
-         * @param exception  exception with the description of the initialize error.
+         * @param feedBanner feedBanner that failed the initialize
+         * @param exception  exception with the description of the initialize error
          */
         void onPubnativeNetworkFeedBannerLoadFail(PubnativeNetworkFeedBanner feedBanner, Exception exception);
 
         /**
-         * Called when the feedBanner was just shown on the screen.
+         * Called when the feedBanner was just shown on the screen
          *
-         * @param feedBanner feedBanner that was shown in the screen.
+         * @param feedBanner feedBanner that was shown in the screen
          */
         void onPubnativeNetworkFeedBannerShow(PubnativeNetworkFeedBanner feedBanner);
 
         /**
-         * Called when the feedBanner impression was confrimed.
+         * Called when the feedBanner impression was confrimed
          *
-         * @param feedBanner feedBanner which impression was confirmed.
+         * @param feedBanner feedBanner which impression was confirmed
          */
         void onPubnativeNetworkFeedBannerImpressionConfirmed(PubnativeNetworkFeedBanner feedBanner);
 
         /**
-         * Called whenever the feedBanner was clicked by the user.
+         * Called whenever the feedBanner was clicked by the user
          *
-         * @param feedBanner feedBanner that was clicked.
+         * @param feedBanner feedBanner that was clicked
          */
         void onPubnativeNetworkFeedBannerClick(PubnativeNetworkFeedBanner feedBanner);
 
         /**
-         * Called whenever the feedBanner was removed from the screen.
+         * Called whenever the feedBanner was removed from the screen
          *
-         * @param feedBanner feedBanner that was hidden.
+         * @param feedBanner feedBanner that was hidden
          */
         void onPubnativeNetworkFeedBannerHide(PubnativeNetworkFeedBanner feedBanner);
     }
@@ -105,9 +106,9 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     //==============================================================================================
 
     /**
-     * Sets a callback listener for this feedBanner object.
+     * Sets a callback listener for this feedBanner object
      *
-     * @param listener valid PubnativeNetworkFeedBanner.Listener object.
+     * @param listener valid PubnativeNetworkFeedBanner.Listener object
      */
     public void setListener(Listener listener) {
 
@@ -116,11 +117,10 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Loads the feedBanner ads before being shown.
-     *
-     * @param context valid context.
-     * @param appToken valid app token string.
-     * @param placement valid placement string.
+     * Loads the feedBanner ads before being shown
+     * @param context valid context
+     * @param appToken valid app token string
+     * @param placement valid placement string
      */
     public synchronized void load(Context context, String appToken, String placement) {
 
@@ -131,7 +131,9 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
         if (mListener == null) {
             Log.e(TAG, "initialize - Error: listener was not set, have you configured one using setListener()?");
         }
-        if (context == null || TextUtils.isEmpty(appToken) || TextUtils.isEmpty(placement)) {
+        if (context == null ||
+            TextUtils.isEmpty(appToken) ||
+            TextUtils.isEmpty(placement)) {
             invokeLoadFail(PubnativeException.FEED_BANNER_PARAMETERS_INVALID);
         } else if (mIsLoading) {
             invokeLoadFail(PubnativeException.FEED_BANNER_LOADING);
@@ -144,9 +146,9 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Tells if the feedBanner is ready to be shown.
+     * Tells if the feedBanner is ready to be shown
      *
-     * @return true if ready, false if not.
+     * @return true if ready, false if not
      */
     public synchronized boolean isReady() {
 
@@ -159,9 +161,9 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * This method will show the feedBanner if the ad is available.
+     * This method will show the feedBanner if the ad is available
      *
-     * @param container valid view group container for the banner.
+     * @param container valid view group container for the banner
      */
     public synchronized void show(ViewGroup container) {
 
@@ -181,7 +183,7 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Destroy the current Feed banner.
+     * Destroy the current Feed banner
      */
     public void destroy() {
 
@@ -190,7 +192,7 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Hides the current InFeed banner.
+     * Hides the current InFeed banner
      */
     public void hide() {
 
@@ -226,9 +228,7 @@ public class PubnativeNetworkFeedBanner extends PubnativeNetworkWaterfall
 
         mAdapter = hub.getFeedBannerAdapter();
         if (mAdapter == null) {
-            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(),
-                                             0,
-                                             PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
+            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(), 0, PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
             getNextNetwork();
         } else {
             mStartTimestamp = System.currentTimeMillis();

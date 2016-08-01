@@ -15,14 +15,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Map;
 
-public class AdMobNetworkRequestAdapter extends PubnativeNetworkRequestAdapter
-        implements NativeAppInstallAd.OnAppInstallAdLoadedListener {
+public class AdMobNetworkRequestAdapter extends PubnativeNetworkRequestAdapter implements NativeAppInstallAd.OnAppInstallAdLoadedListener {
 
     public static final    String TAG           = AdMobNetworkRequestAdapter.class.getSimpleName();
     protected static final String ADMOB_UNIT_ID = "unit_id";
 
     /**
-     * Creates a new instance of AdMobNetworkRequestAdapter.
+     * Creates a new instance of AdMobNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.NativeExpressAdView;
 
 import net.pubnative.mediation.exceptions.PubnativeException;
 
@@ -26,7 +27,7 @@ public class AdMobNetworkBannerAdapter extends PubnativeNetworkBannerAdapter {
     protected boolean mIsLoaded = false;
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -58,8 +59,7 @@ public class AdMobNetworkBannerAdapter extends PubnativeNetworkBannerAdapter {
         if (mAdView != null) {
             ViewGroup rootView = (ViewGroup) ((Activity) mContext).findViewById(android.R.id.content);
             RelativeLayout container = new RelativeLayout(mContext);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                                                 ViewGroup.LayoutParams.MATCH_PARENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             container.setLayoutParams(params);
             container.setGravity(Gravity.BOTTOM);
             rootView.addView(container);
@@ -111,7 +111,7 @@ public class AdMobNetworkBannerAdapter extends PubnativeNetworkBannerAdapter {
             mAdView = new AdView(mContext);
             mAdView.setAdSize(AdSize.SMART_BANNER);
             mAdView.setAdUnitId(unitId);
-            mAdView.setAdListener(mListener);
+            mAdView.setAdListener(listener);
             mAdView.loadAd(getAdRequest());
         }
     }
@@ -141,8 +141,7 @@ public class AdMobNetworkBannerAdapter extends PubnativeNetworkBannerAdapter {
     //==============================================================================================
     // AdListener
     //----------------------------------------------------------------------------------------------
-
-    private com.google.android.gms.ads.AdListener mListener = new com.google.android.gms.ads.AdListener() {
+    private com.google.android.gms.ads.AdListener listener = new com.google.android.gms.ads.AdListener() {
 
         @Override
         public void onAdClosed() {

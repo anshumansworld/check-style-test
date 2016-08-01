@@ -27,7 +27,7 @@ public class YahooNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
     private   Context        mContext;
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -109,8 +109,7 @@ public class YahooNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
             // create container for banner
             ViewGroup rootView = (ViewGroup) ((Activity) mContext).findViewById(android.R.id.content);
             RelativeLayout container = new RelativeLayout(mContext);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                                                 ViewGroup.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             container.setLayoutParams(params);
             rootView.addView(container);
             //create flurry banner
@@ -201,9 +200,9 @@ public class YahooNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
     }
 
     @Override
-    public void onError(FlurryAdBanner flurryAdBanner, FlurryAdErrorType flurryAdErrorType, int errorCode) {
+    public void onError(FlurryAdBanner flurryAdBanner, FlurryAdErrorType flurryAdErrorType, int i) {
 
-        Log.v(TAG, "onError: " + errorCode);
+        Log.v(TAG, "onError: " + i);
         invokeLoadFail(PubnativeException.ADAPTER_UNKNOWN_ERROR);
     }
 }

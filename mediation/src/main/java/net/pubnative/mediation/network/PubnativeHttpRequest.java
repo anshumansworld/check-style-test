@@ -51,7 +51,7 @@ public class PubnativeHttpRequest {
     //==============================================================================================
     // Request properties
     protected int      mTimeoutInMillis = 4000; // 4 seconds
-    protected String   mPostString      = null;
+    protected String   mPOSTString      = null;
     // Inner
     protected Listener mListener        = null;
     protected Handler  mHandler         = null;
@@ -63,25 +63,25 @@ public class PubnativeHttpRequest {
     public interface Listener {
 
         /**
-         * Called when the HttpRequest is about to execute.
+         * Called when the HttpRequest is about to execute
          *
-         * @param request request that is about to execute.
+         * @param request request that is about to execute
          */
         void onPubnativeHttpRequestStart(PubnativeHttpRequest request);
 
         /**
-         * Called when the HttpRequest has just finished with a valid String response.
+         * Called when the HttpRequest has just finished with a valid String response
          *
-         * @param request request that have just finished.
-         * @param result  string with the given response from the server.
+         * @param request request that have just finished
+         * @param result  string with the given response from the server
          */
         void onPubnativeHttpRequestFinish(PubnativeHttpRequest request, String result);
 
         /**
-         * Called when the HttpRequest fails, after this method the request will be stopped.
+         * Called when the HttpRequest fails, after this method the request will be stopped
          *
-         * @param request   request that have just failed.
-         * @param exception exception with more info about the error.
+         * @param request   request that have just failed
+         * @param exception exception with more info about the error
          */
         void onPubnativeHttpRequestFail(PubnativeHttpRequest request, Exception exception);
     }
@@ -91,9 +91,9 @@ public class PubnativeHttpRequest {
     //==============================================================================================
 
     /**
-     * Sets timeout for connection and reading, if not specified default is 0 ms.
+     * Sets timeout for connection and reading, if not specified default is 0 ms
      *
-     * @param timeoutInMillis time in milliseconds.
+     * @param timeoutInMillis time in milliseconds
      */
     public void setTimeout(int timeoutInMillis) {
 
@@ -101,23 +101,18 @@ public class PubnativeHttpRequest {
         mTimeoutInMillis = timeoutInMillis;
     }
 
-    /**
-     * Sets tracking data for ad request.
-     *
-     * @param postString value for request params.
-     */
     public void setPOSTString(String postString) {
 
         Log.v(TAG, "setPOSTString");
-        mPostString = postString;
+        mPOSTString = postString;
     }
 
     /**
-     * This method will execute a new request to the given URL.
+     * This method will execute a new request to the given URL
      *
-     * @param context   valid Context object.
-     * @param urlString URL where the request will be done.
-     * @param listener  valid Listener for callbacks.
+     * @param context   valid Context object
+     * @param urlString URL where the request will be done
+     * @param listener  valid Listener for callbacks
      */
     public void start(Context context, final String urlString, Listener listener) {
 
@@ -128,8 +123,7 @@ public class PubnativeHttpRequest {
             Log.w(TAG, "Warning: null listener specified, performing request without callbacks");
         }
         if (context == null) {
-            invokeFail(new IllegalArgumentException("PubnativeHttpRequest - Error: null context "
-                    + "provided, dropping call"));
+            invokeFail(new IllegalArgumentException("PubnativeHttpRequest - Error: null context provided, dropping call"));
         } else if (TextUtils.isEmpty(urlString)) {
             invokeFail(new IllegalArgumentException("PubnativeHttpRequest - Error: null or empty url, dropping call"));
         } else if (PubnativeDeviceUtils.isNetworkAvailable(context)) {
@@ -170,16 +164,16 @@ public class PubnativeHttpRequest {
             // 2. Set connection properties
             connection.setDoInput(true);
             connection.setConnectTimeout(mTimeoutInMillis);
-            if (TextUtils.isEmpty(mPostString)) {
+            if (TextUtils.isEmpty(mPOSTString)) {
                 connection.setRequestMethod("GET");
             } else {
                 connection.setRequestMethod("POST");
                 connection.setUseCaches(false);
                 connection.setDoOutput(true);
-                connection.setRequestProperty("Content-Length", Integer.toString(mPostString.getBytes().length));
+                connection.setRequestProperty("Content-Length", Integer.toString(mPOSTString.getBytes().length));
                 OutputStream connectionOutputStream = connection.getOutputStream();
                 OutputStreamWriter wr = new OutputStreamWriter(connectionOutputStream, "UTF-8");
-                wr.write(mPostString);
+                wr.write(mPOSTString);
                 wr.flush();
                 wr.close();
             }
@@ -201,8 +195,7 @@ public class PubnativeHttpRequest {
                 } catch (PubnativeException ex) {
                     errorData.put("parsingException", ex.toString());
                 }
-                invokeFail(PubnativeException.extraException(PubnativeException.NETWORK_INVALID_STATUS_CODE,
-                                                             errorData));
+                invokeFail(PubnativeException.extraException(PubnativeException.NETWORK_INVALID_STATUS_CODE, errorData));
             }
         } catch (Exception exception) {
             invokeFail(exception);

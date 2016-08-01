@@ -32,15 +32,15 @@ import net.pubnative.mediation.exceptions.PubnativeException;
 
 import java.util.Map;
 
-public class PubnativeLibraryNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
-        implements PubnativeBanner.Listener {
+public class PubnativeLibraryNetworkBannerAdapter
+        extends PubnativeNetworkBannerAdapter implements PubnativeBanner.Listener {
 
     private static String TAG = PubnativeLibraryNetworkBannerAdapter.class.getSimpleName();
 
     protected PubnativeBanner mBanner;
 
     /**
-     * Creates a new instance of PubnativeLibraryNetworkBannerAdapter.
+     * Creates a new instance of PubnativeLibraryNetworkBannerAdapter
      *
      * @param data server configured data for the current adapter network.
      */

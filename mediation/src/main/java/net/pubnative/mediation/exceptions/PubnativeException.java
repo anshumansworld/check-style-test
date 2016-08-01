@@ -69,10 +69,10 @@ public class PubnativeException extends Exception {
     public static final PubnativeException BANNER_LOAD_FAILED              = new PubnativeException(7003, "Banner failed on load");
 
     /**
-     * Constructor.
+     * Constructor
      *
-     * @param errorCode Error code.
-     * @param message   Error message.
+     * @param errorCode Error code
+     * @param message   Error message
      */
     public PubnativeException(int errorCode, String message) {
 
@@ -81,9 +81,9 @@ public class PubnativeException extends Exception {
     }
 
     /**
-     * This will return this exception error code number.
+     * This will return this exception error code number
      *
-     * @return valid int representing the error code.
+     * @return valid int representing the error code
      */
     public int getErrorCode() {
 
@@ -127,13 +127,6 @@ public class PubnativeException extends Exception {
         return result;
     }
 
-    /**
-     * This method used to get invalid network exception.
-     *
-     * @param exception network exception.
-     * @param extraMap  contains error code and error message.
-     * @return PubnativeException.
-     */
     public static PubnativeException extraException(PubnativeException exception, Map extraMap) {
 
         Log.v(TAG, "extraException");

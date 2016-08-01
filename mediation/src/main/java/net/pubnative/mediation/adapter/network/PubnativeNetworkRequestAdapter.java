@@ -37,7 +37,7 @@ public abstract class PubnativeNetworkRequestAdapter extends PubnativeNetworkAda
     protected Listener mListener;
 
     /**
-     * Listener.
+     * Listener
      */
     public interface Listener {
 
@@ -66,7 +66,7 @@ public abstract class PubnativeNetworkRequestAdapter extends PubnativeNetworkAda
     }
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -76,9 +76,9 @@ public abstract class PubnativeNetworkRequestAdapter extends PubnativeNetworkAda
     }
 
     /**
-     * Sets listener for this request.
+     * Sets listener for this request
      *
-     * @param listener valid listener.
+     * @param listener valid listener
      */
     public void setListener(Listener listener) {
 

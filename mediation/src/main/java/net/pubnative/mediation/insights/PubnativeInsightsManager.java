@@ -59,25 +59,22 @@ public class PubnativeInsightsManager {
     /**
      * Queues impression/click tracking data and sends it to pubnative server.
      *
-     * @param context   valid Context object.
-     * @param baseUrl   the base URL of the tracking server.
-     * @param extras    added parameters that will be included as querystring parameters.
+     * @param context   valid Context object
+     * @param baseURL   the base URL of the tracking server
+     * @param extras    added parameters that will be included as querystring parameters
      * @param dataModel PubnativeInsightDataModel object with values filled in.
      */
-    public static synchronized void trackData(Context context,
-                                              String baseUrl,
-                                              Map<String, String> extras,
-                                              PubnativeInsightDataModel dataModel) {
+    public synchronized static void trackData(Context context, String baseURL, Map<String, String> extras, PubnativeInsightDataModel dataModel) {
 
         Log.v(TAG, "trackData");
         if (context == null) {
             Log.e(TAG, "trackData - context can't be null. Dropping call");
-        } else if (TextUtils.isEmpty(baseUrl)) {
+        } else if (TextUtils.isEmpty(baseURL)) {
             Log.e(TAG, "trackData - baseURL can't be empty. Dropping call");
         } else if (dataModel == null) {
             Log.e(TAG, "trackData - dataModel can't be null. Dropping call");
         } else {
-            Uri.Builder uriBuilder = Uri.parse(baseUrl).buildUpon();
+            Uri.Builder uriBuilder = Uri.parse(baseURL).buildUpon();
             // Fill with passed parameters
             if (extras != null && extras.size() > 0) {
                 for (String key : extras.keySet()) {
@@ -101,7 +98,7 @@ public class PubnativeInsightsManager {
     // WORKFLOW
     //==============================================================================================
 
-    protected static synchronized void trackNext(final Context context) {
+    protected synchronized static void trackNext(final Context context) {
 
         Log.v(TAG, "trackNext");
         if (context == null) {
@@ -141,9 +138,7 @@ public class PubnativeInsightsManager {
                                     Map errorData = new HashMap();
                                     errorData.put("parsingException", e.toString());
                                     errorData.put("serverResponse", result);
-                                    trackingFailed(context, model, PubnativeException.extraException(
-                                                                            PubnativeException.NETWORK_INVALID_RESPONSE,
-                                                                            errorData).toString());
+                                    trackingFailed(context, model, PubnativeException.extraException(PubnativeException.NETWORK_INVALID_RESPONSE, errorData).toString());
                                 }
                             }
                         }
@@ -184,10 +179,7 @@ public class PubnativeInsightsManager {
         trackNext(context);
     }
 
-    protected static void sendTrackingDataToServer(Context context,
-                                                   String trackingDataString,
-                                                   String url,
-                                                   PubnativeHttpRequest.Listener listener) {
+    protected static void sendTrackingDataToServer(Context context, String trackingDataString, String url, PubnativeHttpRequest.Listener listener) {
 
         Log.v(TAG, "sendTrackingDataToServer");
         PubnativeHttpRequest http = new PubnativeHttpRequest();
@@ -269,9 +261,7 @@ public class PubnativeInsightsManager {
         return result;
     }
 
-    protected static void setTrackingList(Context context,
-                                          String listKey,
-                                          List<PubnativeInsightRequestModel> pendingList) {
+    protected static void setTrackingList(Context context, String listKey, List<PubnativeInsightRequestModel> pendingList) {
 
         Log.v(TAG, "getTrackingList");
         if (context != null) {

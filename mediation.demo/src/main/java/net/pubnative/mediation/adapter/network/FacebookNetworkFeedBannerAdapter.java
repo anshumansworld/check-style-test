@@ -51,7 +51,7 @@ public class FacebookNetworkFeedBannerAdapter extends PubnativeNetworkFeedBanner
     private boolean mIsLoaded;
 
     /**
-     * Creates a new instance of FacebookNetworkFeedBannerAdapter.
+     * Creates a new instance of FacebookNetworkFeedBannerAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -97,8 +97,7 @@ public class FacebookNetworkFeedBannerAdapter extends PubnativeNetworkFeedBanner
     public void show(ViewGroup container) {
 
         Log.v(TAG, "show");
-        container.addView(mFeedBanner, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                                  ViewGroup.LayoutParams.MATCH_PARENT));
+        container.addView(mFeedBanner, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         invokeShow();
     }
 
@@ -140,8 +139,7 @@ public class FacebookNetworkFeedBannerAdapter extends PubnativeNetworkFeedBanner
                     Map errorData = new HashMap();
                     errorData.put("errorCode", adError.getErrorCode());
                     errorData.put("message", adError.getErrorMessage());
-                    invokeLoadFail(PubnativeException.extraException(PubnativeException.ADAPTER_UNKNOWN_ERROR,
-                                                                     errorData));
+                    invokeLoadFail(PubnativeException.extraException(PubnativeException.ADAPTER_UNKNOWN_ERROR, errorData));
             }
         }
     }

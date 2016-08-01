@@ -89,10 +89,12 @@ public class PubnativeDeliveryRuleModel {
         Log.v(TAG, "getPacingOverdueCalendar");
         boolean frequencyCapReached = false;
         if (isDayImpressionCapActive()) {
-            frequencyCapReached = imp_cap_day <= PubnativeDeliveryManager.getCurrentDailyCount(context, placementID);
+            frequencyCapReached = imp_cap_day <= PubnativeDeliveryManager.getCurrentDailyCount(
+                    context, placementID);
         }
         if (!frequencyCapReached && isHourImpressionCapActive()) {
-            frequencyCapReached = imp_cap_hour <= PubnativeDeliveryManager.getCurrentHourlyCount(context, placementID);
+            frequencyCapReached = imp_cap_hour <= PubnativeDeliveryManager.getCurrentHourlyCount(
+                    context, placementID);
         }
         return frequencyCapReached;
     }

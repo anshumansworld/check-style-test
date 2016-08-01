@@ -56,9 +56,9 @@ public abstract class PubnativeNetworkWaterfall {
     //==============================================================================================
 
     /**
-     * Sets the targeting model for the request.
+     * Sets the targeting model for the request
      *
-     * @param targeting targeting model with extended targeting config.
+     * @param targeting targeting model with extended targeting config
      */
     public void setTargeting(PubnativeAdTargetingModel targeting) {
 
@@ -67,9 +67,9 @@ public abstract class PubnativeNetworkWaterfall {
     }
 
     /**
-     * Add additional and customisable request parameters for API requests.
-     * @param key valid key String.
-     * @param value valid key Value.
+     * Add additional and customisable request parameters for API requests
+     * @param key valid key String
+     * @param value valid key Value
      */
     public void setRequestParameter(String key, String value) {
 

@@ -29,11 +29,10 @@ import android.view.ViewGroup;
 
 import net.pubnative.library.request.model.PubnativeAdModel;
 
-public class PubnativeLibraryAdModel extends net.pubnative.mediation.request.model.PubnativeAdModel
-        implements PubnativeAdModel.Listener {
+public class PubnativeLibraryAdModel extends net.pubnative.mediation.request.model.PubnativeAdModel implements PubnativeAdModel.Listener {
 
     private static String        TAG            = PubnativeLibraryAdModel.class.getSimpleName();
-    protected PubnativeAdModel   mAdModel       = null;
+    protected net.pubnative.library.request.model.PubnativeAdModel mAdModel = null;
 
     public PubnativeLibraryAdModel(PubnativeAdModel model) {
 

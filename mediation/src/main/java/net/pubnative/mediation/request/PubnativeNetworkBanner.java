@@ -28,54 +28,50 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     public interface Listener {
 
         /**
-         * Called whenever the banner finished loading an ad.
+         * Called whenever the banner finished loading an ad
+         * w
          *
-         * @param banner banner that finished the initialize.
+         * @param banner banner that finished the initialize
          */
         void onPubnativeNetworkBannerLoadFinish(PubnativeNetworkBanner banner);
 
         /**
-         * Called whenever the banner failed loading an ad.
+         * Called whenever the banner failed loading an ad
          *
-         * @param banner    banner that failed the initialize.
-         * @param exception exception with the description of the initialize error.
+         * @param banner    banner that failed the initialize
+         * @param exception exception with the description of the initialize error
          */
         void onPubnativeNetworkBannerLoadFail(PubnativeNetworkBanner banner, Exception exception);
 
         /**
-         * Called when the banner was just shown on the screen.
+         * Called when the banner was just shown on the screen
          *
-         * @param banner banner that was shown in the screen.
+         * @param banner banner that was shown in the screen
          */
         void onPubnativeNetworkBannerShow(PubnativeNetworkBanner banner);
 
         /**
-         * Called when the banner impression was confrimed.
+         * Called when the banner impression was confrimed
          *
-         * @param banner banner which impression was confirmed.
+         * @param banner banner which impression was confirmed
          */
         void onPubnativeNetworkBannerImpressionConfirmed(PubnativeNetworkBanner banner);
 
         /**
-         * Called whenever the banner was clicked by the user.
+         * Called whenever the banner was clicked by the user
          *
-         * @param banner banner that was clicked.
+         * @param banner banner that was clicked
          */
         void onPubnativeNetworkBannerClick(PubnativeNetworkBanner banner);
 
         /**
-         * Called whenever the banner was removed from the screen.
+         * Called whenever the banner was removed from the screen
          *
-         * @param banner banner that was hidden.
+         * @param banner banner that was hidden
          */
         void onPubnativeNetworkBannerHide(PubnativeNetworkBanner banner);
     }
 
-    /**
-     * Sets listener for this request.
-     *
-     * @param listener valid listener.
-     */
     public void setListener(Listener listener) {
 
         Log.v(TAG, "setListener");
@@ -83,7 +79,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Loads the interstitial ads before being shown.
+     * Loads the interstitial ads before being shown
      */
     public synchronized void load(Context context, String appToken, String placement) {
 
@@ -106,7 +102,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * This method will show the banner if the ad is available.
+     * This method will show the banner if the ad is available
      */
     public synchronized void show() {
 
@@ -123,7 +119,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Tells if the banner is ready to be shown.
+     * Tells if the banner is ready to be shown
      */
     public synchronized boolean isReady() {
 
@@ -136,7 +132,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Destroy the current banner.
+     * Destroy the current banner
      */
     public void destroy() {
 
@@ -145,7 +141,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
     }
 
     /**
-     * Hides the current banner.
+     * Hides the current banner
      */
     public void hide() {
 
@@ -181,9 +177,7 @@ public class PubnativeNetworkBanner extends PubnativeNetworkWaterfall
 
         mAdapter = hub.getBannerAdapter();
         if (mAdapter == null) {
-            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(),
-                                             0,
-                                             PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
+            mInsight.trackUnreachableNetwork(mPlacement.currentPriority(), 0, PubnativeException.ADAPTER_TYPE_NOT_IMPLEMENTED);
             getNextNetwork();
         } else {
             mStartTimestamp = System.currentTimeMillis();

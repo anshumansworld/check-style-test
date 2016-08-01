@@ -39,7 +39,7 @@ public abstract class PubnativeNetworkInterstitialAdapter extends PubnativeNetwo
     protected LoadListener mLoadListener;
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -49,80 +49,69 @@ public abstract class PubnativeNetworkInterstitialAdapter extends PubnativeNetwo
     }
 
     /**
-     * Interface for callbacks related to the interstitial view behaviour.
+     * Interface for callbacks related to the interstitial view behaviour
      */
     public interface LoadListener {
 
         /**
-         * Called whenever the interstitial finished loading an ad.
+         * Called whenever the interstitial finished loading an ad
          *
-         * @param interstitial interstitial that finished the initialize.
+         * @param interstitial interstitial that finished the initialize
          */
         void onAdapterLoadFinish(PubnativeNetworkInterstitialAdapter interstitial);
 
         /**
-         * Called whenever the interstitial failed loading an ad.
+         * Called whenever the interstitial failed loading an ad
          *
-         * @param interstitial interstitial that failed the initialize.
-         * @param exception    exception with the description of the initialize error.
+         * @param interstitial interstitial that failed the initialize
+         * @param exception    exception with the description of the initialize error
          */
-        void onAdapterLoadFail(PubnativeNetworkInterstitialAdapter interstitial,
-                               Exception exception);
+        void onAdapterLoadFail(PubnativeNetworkInterstitialAdapter interstitial, Exception exception);
     }
 
     /**
-     * Interface for callbacks related to the interstitial view behaviour.
+     * Interface for callbacks related to the interstitial view behaviour
      */
     public interface AdListener {
 
         /**
-         * Called when the interstitial was just shown on the screen.
+         * Called when the interstitial was just shown on the screen
          *
-         * @param interstitial interstitial that was shown in the screen.
+         * @param interstitial interstitial that was shown in the screen
          */
         void onAdapterShow(PubnativeNetworkInterstitialAdapter interstitial);
 
         /**
-         * Called when the interstitial impression was confrimed.
+         * Called when the interstitial impression was confrimed
          *
-         * @param interstitial interstitial which impression was confirmed.
+         * @param interstitial interstitial which impression was confirmed
          */
         void onAdapterImpressionConfirmed(PubnativeNetworkInterstitialAdapter interstitial);
 
         /**
-         * Called whenever the interstitial was clicked by the user.
+         * Called whenever the interstitial was clicked by the user
          *
-         * @param interstitial interstitial that was clicked.
+         * @param interstitial interstitial that was clicked
          */
         void onAdapterClick(PubnativeNetworkInterstitialAdapter interstitial);
 
         /**
-         * Called whenever the interstitial was removed from the screen.
+         * Called whenever the interstitial was removed from the screen
          *
-         * @param interstitial interstitial that was hidden.
+         * @param interstitial interstitial that was hidden
          */
         void onAdapterHide(PubnativeNetworkInterstitialAdapter interstitial);
     }
-
     //==============================================================================================
     // Overridable methods
     //==============================================================================================
-    /**
-     * Sets loadlistener for this request.
-     *
-     * @param listener  valid listener.
-     */
+
     public void setLoadListener(PubnativeNetworkInterstitialAdapter.LoadListener listener) {
 
         Log.v(TAG, "setLoadListener");
         mLoadListener = listener;
     }
 
-    /**
-     * Sets adlistener for this request.
-     *
-     * @param listener  valid listener.
-     */
     public void setAdListener(PubnativeNetworkInterstitialAdapter.AdListener listener) {
 
         Log.v(TAG, "setAdListener");
@@ -149,26 +138,26 @@ public abstract class PubnativeNetworkInterstitialAdapter extends PubnativeNetwo
     //==============================================================================================
 
     /**
-     * Starts loading the interstitial ad.
+     * Starts loading the interstitial ad
      *
-     * @param context valid Context.
+     * @param context valid Context
      */
     public abstract void load(Context context);
 
     /**
-     * Tells if the interstitial is ready to be shown in the screen.
+     * Tells if the interstitial is ready to be shown in the screen
      *
-     * @return true if ready, false if not.
+     * @return true if ready, false if not
      */
     public abstract boolean isReady();
 
     /**
-     * Starts showing the interstitial for the adapted network.
+     * Starts showing the interstitial for the adapted network
      */
     public abstract void show();
 
     /**
-     * Destroys the current interstitial for the adapted network.
+     * Destroys the current interstitial for the adapted network
      */
     public abstract void destroy();
 

@@ -45,7 +45,7 @@ public class FacebookNetworkInterstitialAdapter extends PubnativeNetworkIntersti
     private InterstitialAd mInterstitial;
 
     /**
-     * Creates a new instance of FacebookNetworkInterstitialAdapter.
+     * Creates a new instance of FacebookNetworkInterstitialAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -134,10 +134,7 @@ public class FacebookNetworkInterstitialAdapter extends PubnativeNetworkIntersti
                     invokeLoadFinish();
                     break;
                 default:
-                    invokeLoadFail(new Exception("FacebookNetworkInterstitialAdapter -code "
-                            + adError.getErrorCode()
-                            + " -message "
-                            + adError.getErrorMessage()));
+                    invokeLoadFail(new Exception("FacebookNetworkInterstitialAdapter -code " + adError.getErrorCode() + " -message " + adError.getErrorMessage()));
             }
         }
     }

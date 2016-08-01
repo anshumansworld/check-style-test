@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdListener;
+import com.facebook.ads.AdSettings;
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.facebook.ads.ImpressionListener;
@@ -30,7 +31,7 @@ public class FacebookNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
     protected boolean mIsLoaded = false;
 
     /**
-     * Creates a new instance of PubnativeNetworkRequestAdapter.
+     * Creates a new instance of PubnativeNetworkRequestAdapter
      *
      * @param data server configured data for the current adapter network.
      */
@@ -61,9 +62,7 @@ public class FacebookNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
         if (mBannerView != null) {
             ViewGroup rootView = (ViewGroup) ((Activity) mContext).findViewById(android.R.id.content);
             RelativeLayout container = new RelativeLayout(mContext);
-            RelativeLayout.LayoutParams params =
-                    new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                    ViewGroup.LayoutParams.MATCH_PARENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             container.setLayoutParams(params);
             container.setGravity(Gravity.BOTTOM);
             rootView.addView(container);
@@ -140,10 +139,7 @@ public class FacebookNetworkBannerAdapter extends PubnativeNetworkBannerAdapter
                     invokeLoadFinish(null);
                     break;
                 default:
-                    invokeLoadFail(new Exception("FacebookNetworkBannerAdapter -code "
-                            + adError.getErrorCode()
-                            + " -message "
-                            + adError.getErrorMessage()));
+                    invokeLoadFail(new Exception("FacebookNetworkBannerAdapter -code " + adError.getErrorCode() + " -message " + adError.getErrorMessage()));
             }
         }
     }

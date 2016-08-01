@@ -32,16 +32,15 @@ import net.pubnative.mediation.exceptions.PubnativeException;
 
 import java.util.Map;
 
-
-public class PubnativeLibraryNetworkInterstitialAdapter extends PubnativeNetworkInterstitialAdapter
-        implements PubnativeInterstitial.Listener {
+public class PubnativeLibraryNetworkInterstitialAdapter
+        extends PubnativeNetworkInterstitialAdapter implements PubnativeInterstitial.Listener {
 
     private static String TAG = PubnativeLibraryNetworkInterstitialAdapter.class.getSimpleName();
 
     protected PubnativeInterstitial mInterstitial;
 
     /**
-     * Creates a new instance of PubnativeLibraryNetworkInterstitialAdapter.
+     * Creates a new instance of PubnativeLibraryNetworkInterstitialAdapter
      *
      * @param data server configured data for the current adapter network.
      */
