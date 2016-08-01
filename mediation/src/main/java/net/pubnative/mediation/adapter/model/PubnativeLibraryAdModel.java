@@ -33,7 +33,7 @@ public class PubnativeLibraryAdModel extends net.pubnative.mediation.request.mod
         implements PubnativeAdModel.Listener {
 
     private static String        TAG            = PubnativeLibraryAdModel.class.getSimpleName();
-    protected net.pubnative.library.request.model.PubnativeAdModel mAdModel = null;
+    protected PubnativeAdModel   mAdModel       = null;
 
     public PubnativeLibraryAdModel(PubnativeAdModel model) {
 

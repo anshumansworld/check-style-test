@@ -101,7 +101,7 @@
    <rule ref="rulesets/java/design.xml/SwitchDensity"/>
    <rule ref="rulesets/java/design.xml/SwitchStmtsShouldHaveDefault"/>
    <rule ref="rulesets/java/design.xml/TooFewBranchesForASwitchStatement"/>
-   <rule ref="rulesets/java/design.xml/UncommentedEmptyMethodBody"/>
+   <!--<rule ref="rulesets/java/design.xml/UncommentedEmptyMethodBody"/>-->
    <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn"/>
    <rule ref="rulesets/java/design.xml/UnsynchronizedStaticDateFormatter"/>
    <rule ref="rulesets/java/design.xml/UseCollectionIsEmpty"/>
@@ -220,7 +220,7 @@
    <rule ref="rulesets/java/unusedcode.xml/UnusedModifier"/>
    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateField"/>
    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateMethod"/>
-   <rule ref="rulesets/jsp/basic-jsf.xml/DontNestJsfInJstlIteration"/>
+<!--   <rule ref="rulesets/jsp/basic-jsf.xml/DontNestJsfInJstlIteration"/>
    <rule ref="rulesets/jsp/basic.xml/DuplicateJspImports"/>
    <rule ref="rulesets/jsp/basic.xml/IframeMissingSrcAttribute"/>
    <rule ref="rulesets/jsp/basic.xml/JspEncoding"/>
@@ -243,5 +243,5 @@
    <rule ref="rulesets/vm/basic.xml/UnusedMacroParameter"/>
    <rule ref="rulesets/xml/basic.xml/MistypedCDATASection"/>
    <rule ref="rulesets/xsl/xpath.xml/AvoidAxisNavigation"/>
-   <rule ref="rulesets/xsl/xpath.xml/UseConcatOnce"/>
+   <rule ref="rulesets/xsl/xpath.xml/UseConcatOnce"/>-->
 </ruleset>
